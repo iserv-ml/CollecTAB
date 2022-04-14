@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button color="green"></ion-back-button>
+    </ion-buttons>
+    <ion-title>resultat-add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="Form" (ngSubmit)="submit(Form)" class="mt-2 w-100 ion-padding" novalidate>
+      
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre de suffrage obténu par liste / candidats *</ion-label>
+      <ion-input formControlName="suffrage" id="suffrage" type="number"></ion-input>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.suffrage.errors?.required">
+        Nombre de suffrage obténu par liste / candidats is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.suffrage.errors?.minlength">
+        Nombre de suffrage obténu par liste / candidats should be min 2 chars long.
+      </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Motif renvoi *</ion-label>
+      <ion-textarea formControlName="motifRenvoi" id="motifRenvoi" type="text"  ></ion-textarea>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.motifRenvoi.errors?.required">
+        motif Renvoi is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.motifRenvoi.errors?.minlength">
+        motif Renvoi should be min 2 chars long.
+      </span>
+
+      <!-- <ion-item lines="full">
+        <ion-label position="floating">Renvoie possible *</ion-label>
+        <ion-checkbox formControlName="renvoiePossible" checked="true" ></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.renvoiePossible.errors?.required">
+          Renvoie possible is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.renvoiePossible.errors?.minlength">
+          Renvoie possible should be min 2 chars long.
+        </span> -->
+
+      <!-- <ion-item lines="full">
+        <ion-label>Notification *</ion-label>
+        <ion-checkbox formControlName="notification" id="notification" color="ligth"></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.prenom.errors?.required">
+          Prenom is required.
+        </span> -->
+
+      <ion-item lines="full" formGroupName="allianceEntity" formArrayName="allianceEntity" >
+        <ion-label>Alliance *</ion-label>
+        <ion-select placeholder="Select One" formControlName="idAlliance">
+          <ion-select-option *ngFor="let x of List1"  value={{x.idAlliance}} >{{x.libelle}}</ion-select-option>
+          <!-- <ion-select-option value="m">Male</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.allianceEntity.errors?.required">
+        Alliance is required.
+      </span>
+
+  </form>
+
+  <div class="mt-3 text-center">
+    <ion-button expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Ajouter
+    </ion-button>
+  </div>
+
+</ion-content>

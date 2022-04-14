@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Resultat detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="mt-10">
+    <ion-row *ngIf="List" >
+      <ion-col size="12">
+        <ion-card>
+
+          <ion-card-content style="width: 500px; height: 500px;">
+            <ion-row>
+              <!-- <ion-col size="8"> Pays : {{List.quartierEntity.communeEntity.cercleEntity.regionEntity.paysEntity.nom}}</ion-col>
+              <ion-col size="8"> Region : {{List.quartierEntity.communeEntity.cercleEntity.regionEntity.libelle}}</ion-col>
+              <ion-col size="8"> Cercle : {{List.quartierEntity.communeEntity.cercleEntity.libelle}}</ion-col> -->
+              <ion-col size="8"> Date du résultat : {{List.dateResultat | date : "dd MMMM y HH:MM:ss"}}</ion-col>
+              <ion-col size="8"> Phase de l'élection : {{List.affectationagentEntity.phase_electionEntity.libelle}}</ion-col>
+              <ion-col size="8"> Agent : {{List.affectationagentEntity.agentTerrainEntity.nom}} - {{List.affectationagentEntity.agentTerrainEntity.prenom}}</ion-col>
+              <ion-col size="8"> Bureau : {{List.affectationagentEntity.bureauvoteEntity.nom}}</ion-col>
+              <ion-col size="8"> Alliance/Candidat : </ion-col>
+              <ion-col size="8"> Suffrage : {{List.Suffrage}}</ion-col>
+              <ion-col size="8"> Créer par : {{List.createdBy}} </ion-col>
+              <ion-col size="8"> Modifier par : {{List.updatedBy}}</ion-col>
+              <ion-col size="8"> Date de création : {{List.createdAt | date : "dd MMMM y HH:mm:ss"}}</ion-col>
+              <ion-col size="8"> Date de modification : {{List.updatedAt | date : "dd MMMM y HH:mm:ss"}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="" (click)="openIonModal(null)">
+      <ion-icon name="add" class="text-white"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+</ion-content>

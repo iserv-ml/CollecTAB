@@ -1,0 +1,61 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar color="tertiary">
+     <ion-title>login</ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="p-0 ion-align-items-center">
+
+  <mat-card>
+    <form class="ion-text-center" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm.value)">
+      
+    </form>
+  </mat-card>
+
+</ion-content> -->
+
+
+<div class="wrapper">
+  <form class="login" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm.value)"> 
+    <p class="title">CONNEXION USSD CO-ELECTAB</p>
+    <input formControlName="emailOrPhone" required type="text" placeholder="Username" autofocus/>
+    <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" formControlName="password" required />
+    <i class="fa fa-key"></i>
+    <ion-item>
+      <ion-label>se souvenir de moi</ion-label>
+      <ion-checkbox color="light"></ion-checkbox>
+    </ion-item>
+    <a href="#">Forgot your password?</a>
+    <button>
+      <i class="spinner"></i>
+      <span class="state" (click)="onLoginFormSubmit(loginForm.value)">CONNEXION</span>
+    </button>
+  </form>
+  <footer><a target="blank" href="http://boudra.me/">Designed by Amadou Diabate</a></footer>
+  <!-- </p> -->
+</div>
+
+<script>
+  var working = false;
+  $('.login').on('submit', function(e) {
+    e.preventDefault();
+    if (working) return;
+    working = true;
+    var $this = $(this),
+      $state = $this.find('button > .state');
+    $this.addClass('loading');
+    $state.html('Authenticating');
+    setTimeout(function() {
+      $this.addClass('ok');
+      $state.html('Welcome back!');
+      setTimeout(function() {
+        $state.html('Log in');
+        $this.removeClass('ok loading');
+        working = false;
+      }, 4000);
+    }, 3000);
+  });
+
+</script>

@@ -1,0 +1,27 @@
+* {
+    color: #57627a;
+  }
+  ion-toolbar {
+    --background: #3434840f;
+  }
+  ion-content {
+    --background: #3434840f;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --padding-bottom: 20px;
+    ion-card{
+      margin: 0;
+      box-shadow: none;
+      --background: #3434840f;
+      ion-card-title{
+        font-size: 23px;
+      }
+    }
+  }
+  ion-fab-button{
+    --background:#0d6efd
+  }
+  .action{
+    float: right;
+  }
+  

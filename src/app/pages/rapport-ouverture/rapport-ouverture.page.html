@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-button></ion-menu-button> -->
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Rapport d'ouverture</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="Form" (ngSubmit)="submit(Form)" class="mt-2 w-100 ion-padding" novalidate>
+
+    <ng-lottie [options]="options" (animationCreated)="created($event)" class="main-page-lottie"></ng-lottie>
+
+    <ion-button fill="outline" expand="block">
+      Example
+      <lottie-player slot="end" autoplay loop src="https://assets3.lottiefiles.com/packages/lf20_ZWEJL5.json">
+      </lottie-player>
+    </ion-button>
+      
+    <ion-item lines="full">
+      <ion-label position="floating">Date rapport *</ion-label>
+      <ion-input formControlName="dateRapport" id="dateRapport" type="date"></ion-input>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.dateRapport.errors?.required">
+        date Rapport is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.dateRapport.errors?.minlength">
+        date Rapport should be min 2 chars long.
+      </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Heure Ouverture *</ion-label>
+      <!-- <ion-datetime formControlName="heureOuverture" id="heureOuverture" displayFormat="YYYY-MM-DD hh-mm"></ion-datetime> -->
+      <ion-input formControlName="heureOuverture" id="heureOuverture" type="time"  ></ion-input>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.heureOuverture.errors?.required">
+        heure Ouverture is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.heureOuverture.errors?.minlength">
+        heure Ouverture should be min 2 chars long.
+      </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Respect procedure d'ouverture *</ion-label>
+        <ion-checkbox formControlName="respectProcedureOuverture" checked="true"  ></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.respectProcedureOuverture.errors?.required">
+          respect Procedure Ouverture is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.respectProcedureOuverture.errors?.minlength">
+          respect Procedure Ouverture should be min 2 chars long.
+        </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Disponibilite Materiel *</ion-label>
+        <ion-checkbox formControlName="disponibiliteMateriel" checked="true" ></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.disponibiliteMateriel.errors?.required">
+          disponibilite Materiel is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.disponibiliteMateriel.errors?.minlength">
+          disponibilite Materiel should be min 2 chars long.
+        </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre d'agent électauraux *</ion-label>
+        <ion-input formControlName="nbAgentElectauraux" id="nbAgentElectauraux" type="number" ></ion-input>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nbAgentElectauraux.errors?.required">
+          nombre d'agent électauraux is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nbAgentElectauraux.errors?.minlength">
+          nombre d'agent électauraux should be min 2 chars long.
+        </span>
+
+      <!-- <ion-item lines="full">
+        <ion-label>Notification *</ion-label>
+        <ion-checkbox formControlName="notification" id="notification" color="ligth"></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.prenom.errors?.required">
+          Prenom is required.
+        </span> -->
+
+      <ion-item lines="full" formGroupName="typeRapportEntity" formArrayName="typeRapportEntity" >
+        <ion-label>Type Rapport *</ion-label>
+        <ion-select placeholder="Select One" formControlName="idTypeRapport">
+          <ion-select-option *ngFor="let x of List1"  value={{x.idTypeRapport}} >{{x.libelle}}</ion-select-option>
+          <!-- <ion-select-option value="m">Male</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.typeRapportEntity.errors?.required">
+        type Rapport is required.
+      </span>
+
+  </form>
+
+  <div class="mt-3 text-center">
+    <ion-button expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Ajouter
+    </ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Transmission des statistiques</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="Form" (ngSubmit)="submit(Form)" class="mt-2 w-100 ion-padding" novalidate>
+      
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre d'homme votant *</ion-label>
+      <ion-input formControlName="nb_homme_votant" id="nb_homme_votant" type="number"></ion-input>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_homme_votant.errors?.required">
+        Nombre d'homme votant is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_homme_votant.errors?.minlength">
+        Nombre d'homme votant should be min 2 chars long.
+      </span>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre de femme votant *</ion-label>
+      <ion-input formControlName="nb_femme_votant" id="nb_femme_votant" type="number"  ></ion-input>
+    </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_femme_votant.errors?.required">
+        Nombre de femme votant is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_femme_votant.errors?.minlength">
+        Nombre de femme votant should be min 2 chars long.
+      </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre de bulletin null *</ion-label>
+        <ion-input formControlName="nb_bulletin_null" type="number" ></ion-input>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_bulletin_null.errors?.required">
+          Nombre de bulletin null Ouverture is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nb_bulletin_null.errors?.minlength">
+          Nombre de bulletin null Ouverture should be min 2 chars long.
+        </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Date statistique *</ion-label>
+        <ion-input formControlName="date_statistique" type="date"></ion-input>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.date_statistique.errors?.required">
+          date is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.date_statistique.errors?.minlength">
+          date should be min 2 chars long.
+        </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Motif renvoi *</ion-label>
+        <ion-textarea  formControlName="motifRenvoi" type="text"></ion-textarea>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.motifRenvoi.errors?.required">
+          Motif is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.motifRenvoi.errors?.minlength">
+          Motif should be min 2 chars long.
+        </span>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Renvoie possible *</ion-label>
+        <ion-checkbox formControlName="renvoiePossible" checked="true" ></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.renvoiePossible.errors?.required">
+          Renvoie possible is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.renvoiePossible.errors?.minlength">
+          Renvoie possible should be min 2 chars long.
+        </span>
+
+      <!-- <ion-item lines="full">
+        <ion-label>Notification *</ion-label>
+        <ion-checkbox formControlName="notification" id="notification" color="ligth"></ion-checkbox>
+      </ion-item>
+
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.prenom.errors?.required">
+          Prenom is required.
+        </span> -->
+
+      <ion-item lines="full" formGroupName="phase_electionEntity" formArrayName="phase_electionEntity" >
+        <ion-label>phase electionEntity *</ion-label>
+        <ion-select placeholder="Select One" formControlName="idPhase">
+          <ion-select-option *ngFor="let x of List"  value={{x.idPhase}} >{{x.libelle}}</ion-select-option>
+          <!-- <ion-select-option value="m">Male</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phase_electionEntity.errors?.required">
+        phase electionEntity is required.
+      </span>
+
+  </form>
+
+  <div class="mt-3 text-center">
+    <ion-button expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Ajouter
+    </ion-button>
+  </div>
+
+</ion-content>
