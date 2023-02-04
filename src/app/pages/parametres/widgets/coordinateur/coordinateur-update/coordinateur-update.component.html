@@ -1,0 +1,117 @@
+
+<mat-card class="example-card" >
+
+    <mat-card-subtitle>Modification des coordinateurs</mat-card-subtitle><br><br>
+    <!-- <mat-card-title>Motif</mat-card-title><br> -->
+
+    <mat-card-content>
+
+        <form class="example-form" [formGroup]="Form" (ngSubmit)="submit(Form)" >
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nom</mat-label>
+              <input type="text" id="nom" formControlName="nom" matInput [errorStateMatcher]="matcher"
+              placeholder="{{Listid.nom}}" [(ngModel)]="Listid.nom">
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="isSubmitted && nom.hasError('nom') && !nom.hasError('required')">
+                Please enter a nom motif length
+              </mat-error>
+              <mat-error *ngIf="isSubmitted && nom.hasError('required')">
+                nom is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Prenom</mat-label>
+                <input type="text" id="prenom" formControlName="prenom" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.prenom}}" [(ngModel)]="Listid.prenom">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && prenom.hasError('prenom') && !prenom.hasError('required')">
+                  Please enter a valid prenom length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && prenom.hasError('required')">
+                    prenom is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Adresse</mat-label>
+                <input type="text" id="adresse" formControlName="adresse" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.adresse}}" [(ngModel)]="Listid.adresse">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && adresse.hasError('adresse') && !adresse.hasError('required')">
+                  Please enter a valid adresse length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && adresse.hasError('required')">
+                    adresse is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="text" id="email" formControlName="email" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.email}}" [(ngModel)]="Listid.email">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && email.hasError('email') && !email.hasError('required')">
+                  Please enter a valid email length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && email.hasError('required')">
+                    email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="text" id="password" formControlName="password" matInput [errorStateMatcher]="matcher"
+                       placeholder="veuillez inserer le password" [(ngModel)]="Listid.password">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && password.hasError('motife') && !password.hasError('required')">
+                  Please enter a valid password length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && password.hasError('required')">
+                    password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Telephone</mat-label>
+                <input type="text" id="telephone" formControlName="telephone" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.telephone}}" [(ngModel)]="Listid.telephone">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && telephone.hasError('telephone') && !telephone.hasError('required')">
+                  Please enter a valid telephone length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && telephone.hasError('required')">
+                    telephone is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Coordinateur</mat-label>
+                <mat-select id="idCoordinateur" formControlName="idCoordinateur" [errorStateMatcher]="matcher">
+                    <mat-option *ngFor="let x of List1"  value={{x.idCoordinateur}}>{{x.nom}} - {{x.prnom}} - {{x.email}}</mat-option>
+                    <mat-option value="false">NON</mat-option>
+                </mat-select>
+                  <mat-error *ngIf="isSubmitted && idCoordinateur.hasError('required')">
+                    Coordinateur is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field> -->
+
+        </form>
+
+    </mat-card-content>
+
+    <!-- <mat-divider inset></mat-divider> -->
+
+    <!-- <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+
+</mat-card>
+
+
+  <mat-dialog-actions align="end" *ngIf="List">
+    <button mat-button mat-dialog-close style="background-color: rgb(133, 206, 157);" expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">submit</button><br>
+    <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>

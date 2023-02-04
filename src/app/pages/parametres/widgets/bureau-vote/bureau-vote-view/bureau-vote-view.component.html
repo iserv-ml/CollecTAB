@@ -1,0 +1,46 @@
+<mat-card class="example-card" *ngIf="List">
+    <mat-card-subtitle>Bureau de vote Detail</mat-card-subtitle><br>
+    <mat-card-title>{{List.createdAt| date : "dd MMMM y HH:mm:ss"}}</mat-card-title><br>
+    <mat-card-content>
+        
+        <p> Nom : {{List.nom}}</p>
+        <!-- <p> Bureau : {{List.bureauvoteEntity.nom}}</p> -->
+        <p> Adresse : {{List.adresse}} </p>
+        <p> Pays : {{List.centreEntity.quartierEntity.communeEntity.cercleEntity.regionEntity.paysEntity.nom}} </p>
+        <p> Region : {{List.centreEntity.quartierEntity.communeEntity.cercleEntity.regionEntity.libelle}} </p>
+        <p> Cercle : {{List.centreEntity.quartierEntity.communeEntity.cercleEntity.libelle}} </p>
+        <p> Nombre d'agent électoraux : {{List.nbAgentElectoraux}} </p>
+        <p> Nombre d'électeurs : {{List.nbElecteurs}} </p>
+        <p> Nombre d'électeurs femme : {{List.femme}} </p>
+        <p> Nombre d'électeurs homme : {{List.homme}} </p>
+        <p> Créer par : {{List.createdBy}} </p>
+        <p> Modifier par : {{List.updatedBy}} </p>
+        <p> Date de création : {{List.createdAt | date : "dd MMMM y HH:mm:ss"}} </p>
+        <p> Date de modification : {{List.updatedAt | date : "dd MMMM y HH:mm:ss"}} </p>
+
+        <p *ngFor="let list of List1">
+            <strong style="color: brown;"> Agent CENI affecté: {{list.bureauvoteEntity.idBureauVote === data.ids ? list.user.nom: ''}} - {{list.bureauvoteEntity.idBureauVote == data.ids ? list.user.prenom: ''}} </strong>
+        </p>
+        <!-- <p> motif Renvoi : {{List.motifRenvoi == null ? 'pas de renvoi' : List.motifRenvoi}}</p> -->
+        <!-- <p> VALIDER : {{List.traite == null|| List.traite == false ? 'NON' : 'OUI'}}</p><br><br> -->
+
+        <!-- <p> {{List.motifRenvoi == null || List.motifRenvoi == '' ? '' : "Renvoyé"}}  </p> -->
+        
+      <!-- <p>This card has divider and indeterminate progress as footer</p> -->
+      <!-- <p>{{ longText }}</p> -->
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card><br>
+
+<!-- <mat-dialog-actions align="end" *ngIf="List"> -->
+  <!-- <button mat-button mat-dialog-close style="background-color: rgb(38, 192, 90);" *ngIf="List.traite == null || List.valider == false" (click)="submit()">Valider</button> -->
+  <button mat-button mat-dialog-close style="background-color: rgb(187, 187, 224);" (click)="close()">Fermer</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+<!-- </mat-dialog-actions> -->

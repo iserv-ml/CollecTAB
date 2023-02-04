@@ -1,0 +1,39 @@
+<mat-card class="example-card" *ngIf="List">
+    <mat-card-subtitle>Commune Detail</mat-card-subtitle><br>
+    <mat-card-title>{{List.createdAt| date : "dd MMMM y HH:mm:ss"}}</mat-card-title><br>
+    <mat-card-content>
+        
+        <p> Pays : {{List.cercleEntity.regionEntity.paysEntity.nom}}</p>
+        <!-- <p> Bureau : {{List.bureauvoteEntity.nom}}</p> -->
+        <p> Region : {{List.cercleEntity.regionEntity.libelle}} </p>
+        <p> Cercle : {{List.cercleEntity.libelle}} </p>
+        <p> Code : {{List.code}} </p>
+        <p> Libelle : {{List.libelle}} </p>
+        <!-- <p> actif : {{List.actif}} </p> -->
+        <p> Créer par : {{List.createdBy}} </p>
+        <p> Modifier par : {{List.updatedBy}} </p>
+        <p> Date de création : {{List.createdAt | date : "dd MMMM y HH:mm:ss"}} </p>
+        <p> Date de modification : {{List.updatedAt | date : "dd MMMM y HH:mm:ss"}} </p>
+        <!-- <p> motif Renvoi : {{List.motifRenvoi == null ? 'pas de renvoi' : List.motifRenvoi}}</p> -->
+        <!-- <p> VALIDER : {{List.traite == null|| List.traite == false ? 'NON' : 'OUI'}}</p><br><br> -->
+
+        <!-- <p> {{List.motifRenvoi == null || List.motifRenvoi == '' ? '' : "Renvoyé"}}  </p> -->
+        
+      <!-- <p>This card has divider and indeterminate progress as footer</p> -->
+      <!-- <p>{{ longText }}</p> -->
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+
+<!-- <mat-dialog-actions align="end" *ngIf="List"> -->
+  <!-- <button mat-button mat-dialog-close style="background-color: rgb(38, 192, 90);" *ngIf="List.traite == null || List.valider == false" (click)="submit()">Valider</button> -->
+  <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+<!-- </mat-dialog-actions> -->

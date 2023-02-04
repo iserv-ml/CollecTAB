@@ -1,0 +1,50 @@
+
+<mat-card class="example-card" >
+
+    <mat-card-subtitle>Modification des partis</mat-card-subtitle><br><br>
+    <!-- <mat-card-title>Motif</mat-card-title><br> -->
+
+    <mat-card-content>
+
+        <form class="example-form" [formGroup]="Form" (ngSubmit)="submit(Form)" >
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nom</mat-label>
+              <input type="text" id="nom" formControlName="nom" matInput [errorStateMatcher]="matcher"
+              placeholder="{{Listid.nom}}" [(ngModel)]="Listid.nom">
+              
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="isSubmitted && nom.hasError('nom') && !nom.hasError('required')">
+                Please enter a nom motif length
+              </mat-error>
+              <mat-error *ngIf="isSubmitted && nom.hasError('required')">
+                nom is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Code</mat-label>
+                <input type="text" id="code" formControlName="code" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.code}}" [(ngModel)]="Listid.code">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && code.hasError('code') && !code.hasError('required')">
+                  Please enter a valid code length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && code.hasError('required')">
+                    code is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+
+</mat-card>
+
+
+  <mat-dialog-actions align="end" *ngIf="List">
+    <button mat-button mat-dialog-close style="background-color: rgb(133, 206, 157);" expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">submit</button><br>
+    <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>

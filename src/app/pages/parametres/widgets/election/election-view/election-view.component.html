@@ -1,0 +1,61 @@
+<div class="container-xxl">
+    <div *ngIf="List">
+      <!-- <button mat-button mat-dialog-close style="background-color: rgb(225, 225, 236);" (click)="close()">Fermer</button> -->
+      <h1 class="fw-bold text-primary" mat-dialog-title>{{List.type}}</h1>
+      <div mat-dialog-content>
+          <div>
+              L'election <span class="fw-bold text-secondary m-0"> {{List.type}} </span>
+              <br><br>
+              <ul>
+                <li>
+                  <span>&#10003;</span>Nombre d'electeurs {{List.nbElecteurs}}
+                </li>
+                <li>
+                  <span>&#10003;</span> Suffrage {{List.suffrage}}
+                </li>
+                <li>
+                  <span>&#10003;</span> Date de l'election {{List.dateElection | date : "dd MMMM y hh:MM:SS"}}
+                </li>
+              </ul>
+            </div><br><br><br>
+      <!-- <mat-form-field appearance="fill">
+          <mat-label>Favorite Animal</mat-label>
+          <input matInput [(ngModel)]="data.animal">
+      </mat-form-field> -->
+      <div *ngFor="let list of ListP" >
+        <div *ngIf="list.electionEntity.idElection == List.idElection">
+          <h1 mat-dialog-title>Phase de l'élection: <span class="fw-bold-light text-primary m-0"> {{list.libelle}} </span></h1>
+          <ul class="list-group list-group-numbered">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">libelle</div>
+                {{list.libelle}}
+                <!-- <mat-spinner></mat-spinner> -->
+              </div>
+              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Active</div>
+                {{list.active}}
+              </div>
+              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Date de la phase de l'election</div>
+                {{list.datePhase | date : "dd MMMM y hh:MM:SS"}}
+              </div>
+              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+      <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+      </div>
+    </div>
+
+</div>

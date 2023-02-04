@@ -1,0 +1,136 @@
+<div class="main">
+
+  <app-nav-bar></app-nav-bar>
+
+<div class="content">
+
+  <div>
+    <button class="burger" (click)="open()">☰</button>
+  </div>
+
+  <div  class="mt-3 mx-20 h1">
+    List des incidents
+  </div>
+
+  <!-- <button [cModalToggle]="verticallyCenteredModal.id" cButton>Centered modal</button>
+<c-modal #verticallyCenteredModal alignment="center" id="verticallyCenteredModal">
+  <c-modal-header>
+    <h5 cModalTitle>Modal title</h5>
+    <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    Woohoo, you are reading this text in a modal!
+  </c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
+      Close
+    </button>
+    <button cButton color="primary">Understood</button>
+  </c-modal-footer>
+</c-modal> -->
+
+  
+
+
+  <div class="mt-3 p-4 m-20 br-2 white center_block">
+
+    <div class="mt-3 p-4 m-20 br-2 white center_block">
+      <div class="p-4 flex space">
+        <button mat-stroked-button matTooltip="Info about the action" color="primary">Mise a jour</button>
+        <button mat-stroked-button color="primary">Exporter</button>
+        <!-- <svg [cIcon]="icons.cilList" size="2" title="List Icon"></svg> -->
+        <!-- <div class="flex user_info"> -->
+  
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div> -->
+  
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="main-searchbar" debounce="500">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" animated>
+      </mat-form-field>
+    </div>
+
+    <mat-card>
+
+      <div class="mat-elevation-z8">
+        <!-- <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"> -->
+
+          <table mat-table [dataSource]="dataSource">
+  
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element; let i=index"> {{i + 1}} </td>
+            </ng-container>
+      
+            <!-- Weight Column -->
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.typeincidentEntity.libelle}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.dateIncident | date : "dd MMMM y HH:mm:ss"}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="agent">
+              <th mat-header-cell *matHeaderCellDef> Agent </th>
+              <td mat-cell *matCellDef="let element"> {{element.affectationagentEntity.user.nom}} {{element.affectationagentEntity.user.prenom}} </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="bureauVote">
+              <th mat-header-cell *matHeaderCellDef> Bureaux de vote </th>
+              <td mat-cell *matCellDef="let element"> {{element.affectationagentEntity.bureauvoteEntity.nom}} </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element"> 
+                <mat-icon (click)="openDialog(element.idincident)" style="margin-right: 27px; color: rgb(120, 120, 248);">view_column</mat-icon>
+                <mat-icon (click)="openDialog2(element.idincident)" style="margin-right: 27px; color: rgb(120, 120, 248);">open_in_new</mat-icon>
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+  
+    </mat-card>
+
+    <div class="p-4 flex space">
+      <div class="flex user_info">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->

@@ -1,0 +1,5 @@
+[1021/103235.344:ERROR:registration_protocol_win.cc(107)] CreateFile: Le fichier spécifié est introuvable. (0x2)
+[1021/103240.719:ERROR:registration_protocol_win.cc(107)] CreateFile: Le fichier spécifié est introuvable. (0x2)
+[1215/151716.691:ERROR:crashpad_client_win.cc(179)] crash server did not respond, self-terminating
+[1219/112927.430:ERROR:registration_protocol_win.cc(107)] CreateFile: Le fichier spécifié est introuvable. (0x2)
+[1219/112945.637:ERROR:registration_protocol_win.cc(107)] CreateFile: Le fichier spécifié est introuvable. (0x2)

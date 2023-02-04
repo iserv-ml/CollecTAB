@@ -1,0 +1,113 @@
+<div  class="main">
+  
+  <!-- nav bar -->
+  <!-- <div class="sidebar p-2" id="mySidebar">
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/home">home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/rapports">Rapport</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/repporting">Repporting</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/statitiques">Statistiques</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/patios">Patios</a>
+        </li>
+      </ul>    
+    </div>
+
+    <button class="close_btn" (click)="open()">&times;</button>
+    <div class="text-center">
+      <img class="logo" src="assets/logo.png" alt="">
+    </div>
+    <div class="text-center">
+      <h4 class="help"> Entrez le nom d'un client pour obtenir son pkpass </h4>
+      <input type="search" name="" id="search">
+    </div>
+    <div class="userList">
+      <div class="flex listElement" *ngFor="let cust of customers" (click)="selectIt(cust)">
+        <div class="circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cir" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path class="text-white" stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h5 class="client"> <p class="listName ">{{cust.name}} </p>  {{getCartType(cust?.loyalityType)}}  </h5>
+      </div>
+    </div>
+  </div> -->
+
+  <app-nav-bar></app-nav-bar>
+
+  <div class="content">
+
+    <div>
+      <button class="burger" (click)="open()">☰</button>
+    </div>
+
+    <!-- <ion-grid class="p-0" style="width: 100%; height: 100%;">
+
+      <ng-lottie [options]="options" (animationCreated)="created($event)" class="main-page-lottie" styles=""  ></ng-lottie>
+  
+    </ion-grid> -->
+    <!-- <div  id="alert" class="alert alert-danger alert-dismissible fade  slide-in-top p-3 d-none" role="alert">
+      Message envoyer avec success à Moustapha.
+    </div>
+    <div  id="alert-error" class="alert-error alert-danger alert-dismissible fade  slide-in-top p-3 d-none" role="alert">
+      Désolé une erreur est survenue lors de l'envoie du message.
+    </div>
+    <div>
+      <button class="burger" (click)="open()">☰</button>
+    </div> -->
+    <!-- <div  class="mt-3 mx-20 h1" style="font-size: 5rem; color: aliceblue;">
+
+      <h1 class="display-1" style="font-size: 5rem;">Display 1</h1>
+
+      Moustapha
+    </div>  -->
+
+     <div class="mt-3 p-4 m-20 br-2 green center_block">
+      <!-- <div class="p-4 flex space"> -->
+        <!-- <div class="flex user_info"> -->
+
+          <h1 class="fw-bold text-primary m-0" style="font-size: 4rem;">welcome to <span class="text-secondary">COLLECTAB</span> </h1>
+          
+          
+    </div>
+
+    <figure class="text-end" style="margin-top: 500px">
+      <blockquote class="blockquote">
+        <p>La différence entre une démocratie et une dictature, c'est qu'en démocratie tu votes avant d'obéir aux ordres, dans une dictature, tu perds pas ton temps à voter.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        citation <cite title="Source Title">Charles Bukowski</cite>
+      </figcaption>
+    </figure>
+    <!-- <div *ngIf="bons?.length > 0">
+      <h3 class="mx-20">Bons</h3>
+      <div  class="mt-2 p-4 mb-3 m-20 br-2 white center_block">
+        <div  *ngFor="let bon of bons ; let isFirst = first">
+          <hr *ngIf="bons?.length > 1 && !isFirst">
+          <div class="px-4 flex space">
+            <div>
+              <h3 class="font-300">Valeur</h3>
+              <p class="number_bon"> {{bon.value}} </p>
+            </div>
+            <div>
+              <qrcode [qrdata]="api+'getBons/'+bon.bonsUUID" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  -->
+  </div>
+</div>
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

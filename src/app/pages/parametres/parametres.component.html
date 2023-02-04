@@ -1,0 +1,108 @@
+<div class="main">
+
+    <app-nav-bar></app-nav-bar>
+  
+  <div class="content">
+  
+    <div>
+      <button class="burger" (click)="open()">☰</button>
+    </div>
+
+    <div  class="">
+        <!-- <mat-list>
+            <mat-list-item> Pepper </mat-list-item>
+            <mat-list-item> Salt </mat-list-item>
+            <mat-list-item> Paprika </mat-list-item>
+        </mat-list> -->
+
+        <ul class="list-group list-group-flush">
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">person</mat-icon>
+              <a class="nav-link" routerLink="/agent">Agent</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">people</mat-icon>
+              <a class="nav-link" routerLink="/alliance">Alliance</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">where_to_vote</mat-icon>
+              <a class="nav-link" routerLink="/bureauVote">Bureau Vote</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">person_outline</mat-icon>
+              <a class="nav-link" routerLink="/candidat">Candidat</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">markunread_mailbox</mat-icon>
+              <a class="nav-link" routerLink="/centre">Centre</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">swap_horizontal_circle</mat-icon>
+              <a class="nav-link" routerLink="/cercle">Cercle</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">receipt</mat-icon>
+              <a class="nav-link" routerLink="/commune">Commune</a>
+            </li>
+  
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active" *ngIf="user.userrole == 'SUPERVISEUR_CENI' ">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">contacts</mat-icon>
+              <a class="nav-link" routerLink="/coordinateur">Cooridnateur</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active" *ngIf="user.userrole == 'SUPERVISEUR_CENI' ">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">explicit</mat-icon>
+                <a class="nav-link" routerLink="/election">Election</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+              <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">flag</mat-icon>
+              <a class="nav-link" routerLink="/parti">Parti</a>
+          </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">flag</mat-icon>
+                <a class="nav-link" routerLink="/pays">Pays</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">location_on</mat-icon>
+                <a class="nav-link" routerLink="/quartier">Quartier</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">outlined_flag</mat-icon>
+                <a class="nav-link" routerLink="/region">Region</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">widgets</mat-icon>
+                <a class="nav-link" routerLink="/typeIncident">Type Incident</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">format_indent_decrease</mat-icon>
+                <a class="nav-link" routerLink="/typeRapport">Type Rapport</a>
+            </li>
+
+            <li class="nav-item d-flex align-items-start" routerLinkActive="active" *ngIf="user.userrole == 'SUPERVISEUR_CENI' ">
+                <mat-icon style="margin-right: 27px; color: rgb(120, 120, 248);">person_pin</mat-icon>
+                <a class="nav-link" routerLink="/utilisateur">Utilisateur</a>
+            </li>
+            
+          </ul>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

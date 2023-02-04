@@ -1,0 +1,36 @@
+.example-card {
+    width: 800px;
+    max-width: 800px;
+    // margin-bottom: 8px;
+    // height: 70vh;
+    max-height: 90vh;
+  }
+  
+  mat-card-subtitle {
+    font-size: 30px;
+    font-family: -webkit-body;
+  }
+  
+  mat-card-title {
+    font-size: 12px;
+    font-family: cursive;
+  }
+  
+  * {
+    font-family: "Lato";
+    color: #57627a;
+      transform: none;
+      // height: 70vh;
+      // border-radius: 30px;
+      // background-color: #dddddd;
+    }
+  
+    mat-dialog-container, mat-card-content{
+      transform: none;
+      width: 800px;
+      height: 70vh;
+      border-radius: 30px;
+      background-color: unset;
+    }
+  
+  

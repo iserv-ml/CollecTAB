@@ -1,0 +1,36 @@
+<mat-card class="example-card" *ngIf="List">
+    <mat-card-subtitle>{{List.typeRapportEntity.libelle}}</mat-card-subtitle><br>
+    <mat-card-title>{{List.createdAt| date : "dd MMMM y HH:mm:ss"}}</mat-card-title><br>
+    <mat-card-content>
+        
+        <p> Agent : {{List.affectationagentEntity.user.nom}} {{List.affectationagentEntity.user.prenom}}</p>
+        <p> Bureau : {{List.affectationagentEntity.bureauvoteEntity.nom}}</p>
+        <p> Taux de participation à midi : {{List.tauxParticipation}}</p>
+        <p> Heure d'ouverture du bureau de vote : {{List.heureOuverture}}</p>
+        <p> Respect des procédure d'ouverture du bureau de vote : {{List.respectProcedureOuverture}} </p>
+        <p> Disponibilité des ressources matérielles : {{List.disponibiliteMateriel === true ? 'oui' : 'non'}}</p>
+        <p> Nombre d'agents électoraux présents : {{List.nbAgentElectauraux}}</p>
+        <p> motif de renvoi : {{List.motifRenvoi == null ? 'pas de renvoi' : List.motifRenvoi}}</p>
+        <p> VALIDER : {{List.valider == null|| List.valider == false ? 'NON' : 'OUI'}}</p><br><br>
+
+        <p> {{List.motifRenvoi == null || List.motifRenvoi == '' ? '' : "Renvoyé"}}  </p>
+        
+      <!-- <p>This card has divider and indeterminate progress as footer</p> -->
+      <!-- <p>{{ longText }}</p> -->
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+
+<mat-dialog-actions align="end" *ngIf="List">
+  <button mat-button mat-dialog-close style="background-color: rgb(247, 247, 247);" *ngIf="List.valider == null || List.valider == false && (List.motifRenvoi == null )" (click)="openDialog2(List.idrapport)">Renvoyer</button>
+  <button mat-button mat-dialog-close style="background-color: rgb(247, 247, 247);" *ngIf="List.valider == null || List.valider == false" (click)="submit()">Valider</button>
+  <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);">Fermer</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

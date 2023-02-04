@@ -1,0 +1,28 @@
+.example-card {
+    max-width: 420px;
+    margin-bottom: 8px;
+  }
+
+  mat-card-subtitle {
+    font-size: 30px;
+    font-family: -webkit-body;
+  }
+
+  mat-card-title {
+    font-size: 12px;
+    font-family: cursive;
+  }
+
+  * {
+    font-family: "Lato";
+    color: #57627a;
+      transform: none;
+      border-radius: 30px;
+    }
+
+    mat-dialog-container{
+      transform: none;
+      border-radius: 30px;
+    }
+  
+  

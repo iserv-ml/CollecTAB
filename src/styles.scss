@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+// for npm roboto-fontface package (to load local files)
+// $roboto-font-path: "~roboto-fontface/fonts" !default;
+// @import "~roboto-fontface/css/roboto/sass/roboto-fontface";
+
+// // for npm material-icons package (to load local files)
+// $material-icons-font-path: '~material-icons/iconfont/';
+// @import '~material-icons/iconfont/material-icons.scss';
+
+
+// @import url('https://cdn.quilljs.com/1.2.2/quill.snow.css');
+// @import url('https://cdn.quilljs.com/1.2.2/quill.bubble.css');
+
+// // indigo-pink, deeppurple-amber, purple-green and pink-bluegrey.
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// @import "../node_modules/angular-calendar/css/angular-calendar.css";
+// @import "../node_modules/dragula/dist/dragula.min.css";
+// @import "../node_modules/@swimlane/ngx-datatable/themes/material.css";
+// @import "../node_modules/@swimlane/ngx-datatable/assets/icons.css";
+// @import "../node_modules/leaflet/dist/leaflet.css";
+
+// @import "app/theme/styles/base";
+// @import "app/theme/styles/theme";
+// @import "app/theme/styles/libs-override";
+// @import "app/theme/styles/rtl";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

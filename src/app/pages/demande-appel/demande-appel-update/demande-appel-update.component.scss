@@ -1,0 +1,39 @@
+.example-card {
+    width: 500px;
+    height: 300px;
+    margin-bottom: 8px;
+  }
+
+  mat-card-subtitle {
+    font-size: 30px;
+    font-family: -webkit-body;
+  }
+
+  mat-card-title {
+    font-size: 12px;
+    font-family: cursive;
+  }
+
+  * {
+    font-family: "Lato";
+    color: #57627a;
+      transform: none;
+      border-radius: 30px;
+    }
+
+    mat-dialog-container{
+      transform: none;
+      border-radius: 30px;
+    }
+  
+    .example-form {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .example-full-width {
+      width: 100%;
+    }
+    
+  

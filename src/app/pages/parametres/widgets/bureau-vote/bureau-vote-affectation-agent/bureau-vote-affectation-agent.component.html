@@ -1,0 +1,52 @@
+
+<mat-card class="example-card" >
+
+    <mat-card-subtitle>Agents affectation au bureau de vote</mat-card-subtitle><br><br>
+    <!-- <mat-card-title>Motif</mat-card-title><br> -->
+
+    <mat-card-content>
+
+        <form class="example-form" [formGroup]="Form" (ngSubmit)="submit(Form)" >
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Agent</mat-label>
+                <mat-select id="iduser" formControlName="iduser" [errorStateMatcher]="matcher">
+                    <div *ngFor="let x of List2">
+                      <mat-option *ngIf="x.userrole == 'ROLE_AGENT'"  value={{x.iduser}}>{{x.nom}} - {{x.prenom}} - {{x.email}}</mat-option>
+                    </div>
+                    <!-- <mat-option value="false">NON</mat-option> -->
+                </mat-select>
+                  <mat-error *ngIf="isSubmitted && iduser.hasError('required')">
+                    Agent is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Phase Election</mat-label>
+                <mat-select id="idPhase" formControlName="idPhase" [errorStateMatcher]="matcher">
+                    <mat-option *ngFor="let x of List1"  value={{x.idPhase}}>{{x.libelle}}</mat-option>
+                    <!-- <mat-option value="false">NON</mat-option> -->
+                </mat-select>
+                  <mat-error *ngIf="isSubmitted && idPhase.hasError('required')">
+                    Phase Election is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+
+    <!-- <mat-divider inset></mat-divider> -->
+
+    <!-- <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+
+</mat-card>
+
+
+  <mat-dialog-actions align="end" *ngIf="List">
+    <button mat-button mat-dialog-close style="background-color: rgb(133, 206, 157);" expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">submit</button><br>
+    <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>

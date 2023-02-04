@@ -1,0 +1,81 @@
+
+<mat-card class="example-card" >
+
+    <mat-card-subtitle>Modification des elections</mat-card-subtitle><br><br>
+    <!-- <mat-card-title>Motif</mat-card-title><br> -->
+
+    <mat-card-content>
+
+        <form class="example-form" [formGroup]="Form" (ngSubmit)="submit(Form)" >
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Type</mat-label>
+              <input type="text" id="type" formControlName="type" matInput [errorStateMatcher]="matcher"
+              placeholder="{{Listid.type}}" [(ngModel)]="Listid.type">
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="isSubmitted && type.hasError('type') && !type.hasError('required')">
+                Please enter a type motif length
+              </mat-error>
+              <mat-error *ngIf="isSubmitted && type.hasError('required')">
+                type is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre d'électeurs</mat-label>
+                <input type="text" id="nbElecteurs" formControlName="nbElecteurs" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.nbElecteurs}}" [(ngModel)]="Listid.nbElecteurs">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && nbElecteurs.hasError('nbElecteurs') && !nbElecteurs.hasError('required')">
+                  Please enter a valid nbElecteurs length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && nbElecteurs.hasError('required')">
+                    nbElecteurs is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date election</mat-label>
+                <input type="date" id="dateElection" formControlName="dateElection" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.dateElection}}" [(ngModel)]="Listid.dateElection">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && dateElection.hasError('dateElection') && !dateElection.hasError('required')">
+                  Please enter a valid dateElection length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && dateElection.hasError('required')">
+                    dateElection is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>suffrage</mat-label>
+                <input type="text" id="suffrage" formControlName="suffrage" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.suffrage}}" [(ngModel)]="Listid.suffrage">
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                <mat-error *ngIf="isSubmitted && suffrage.hasError('suffrage') && !suffrage.hasError('required')">
+                  Please enter a valid suffrage length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && suffrage.hasError('required')">
+                    suffrage is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+
+    <!-- <mat-divider inset></mat-divider> -->
+
+    <!-- <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+
+</mat-card>
+
+
+  <mat-dialog-actions align="end" *ngIf="List">
+    <button mat-button mat-dialog-close style="background-color: rgb(247, 247, 247);" expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">submit</button><br>
+    <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>

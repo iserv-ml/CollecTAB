@@ -1,0 +1,139 @@
+
+<mat-card class="example-card" >
+
+    <mat-card-subtitle>Modification des quartiers</mat-card-subtitle><br><br>
+    <!-- <mat-card-title>Motif</mat-card-title><br> -->
+
+    <mat-card-content>
+
+        <form class="example-form" [formGroup]="Form" (ngSubmit)="submit(Form)" >
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Code</mat-label>
+                <input type="text" id="code" formControlName="code" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.code}}"  [(ngModel)]="Listid.code">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && code.hasError('code') && !code.hasError('required')">
+                  Please enter a valid code length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && code.hasError('required')">
+                    code is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Libelle</mat-label>
+                <input type="text" id="libelle" formControlName="libelle" matInput [errorStateMatcher]="matcher"
+                placeholder="{{Listid.libelle}}" [(ngModel)]="Listid.libelle">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="isSubmitted && libelle.hasError('libelle') && !libelle.hasError('required')">
+                  Please enter a valid libelle length
+                </mat-error>
+                <mat-error *ngIf="isSubmitted && libelle.hasError('required')">
+                    libelle is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Commune</mat-label>
+                <mat-select id="idCommune" formControlName="idCommune" [errorStateMatcher]="matcher">
+                    <mat-option *ngFor="let x of List1"  value={{x.idCommune}}>{{x.libelle}}</mat-option>
+                    <mat-option value="false">NON</mat-option>
+                </mat-select>
+                  <mat-error *ngIf="isSubmitted && idCommune.hasError('required')">
+                    Commune is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field> -->
+
+            <mat-vertical-stepper [linear]="false" #stepper>
+              <mat-step [stepControl]="firstFormGroup" errorMessage="Region is required.">
+                <form [formGroup]="firstFormGroup">
+                  <ng-template matStepLabel>Choisie la régions</ng-template>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <!-- <mat-label>Commune</mat-label> -->
+                    <mat-select id="idRegion" formControlName="idRegion" [errorStateMatcher]="matcher">
+                        <mat-option *ngFor="let x of Region" placeholder="region"  value={{x.idRegion}}>{{x.libelle}}</mat-option>
+                        <!-- <mat-option value="false">NON</mat-option> -->
+                    </mat-select>
+                      <mat-error *ngIf="isSubmitted && idRegion.hasError('required')">
+                        Region is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+                  <div>
+                    <button (click)="onSubmitFirst()" [disabled]="!firstFormGroup.valid" mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+                <form [formGroup]="secondFormGroup">
+                  <ng-template matStepLabel>Choisie le cercle</ng-template>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <!-- <mat-label>Commune</mat-label> -->
+                    <mat-select id="idCercle" formControlName="idCercle" [errorStateMatcher]="matcher">
+                      <div *ngFor="let x of Cercle">
+                        <!-- *ngIf="x.regionEntity.idRegion == idRegion" -->
+                        <mat-option placeholder="cercle" *ngIf="x.regionEntity.idRegion == idRegion" value={{x.idCercle}}> {{x.libelle}} </mat-option>
+                      </div>
+                        <!-- <mat-option value="false">NON</mat-option> -->
+                    </mat-select>
+                      <mat-error *ngIf="isSubmitted && idCercle.hasError('required')">
+                        Cercle is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button (click)="onSubmitSecond()" [disabled]="!secondFormGroup.valid" mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+                <form [formGroup]="thirdFormGroup">
+                  <ng-template matStepLabel>Choisie la commune</ng-template>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <!-- <mat-label>Commune</mat-label> -->
+                    <mat-select id="idCercle" formControlName="idCommune" [errorStateMatcher]="matcher">
+                      <div *ngFor="let x of List1">
+                        <!-- *ngIf="x.regionEntity.idRegion == idRegion" -->
+                        <mat-option placeholder="cercle" *ngIf="x.cercleEntity.idCercle == idCercle" value={{x.idCommune}}> {{x.libelle}} </mat-option>
+                      </div>
+                        <!-- <mat-option value="false">NON</mat-option> -->
+                    </mat-select>
+                      <mat-error *ngIf="isSubmitted && idCercle.hasError('required')">
+                        Cercle is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+                  <div>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button (click)="onSubmitthird()" mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <!-- <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+              </mat-step> -->
+            </mat-vertical-stepper>
+
+        </form>
+
+    </mat-card-content>
+
+    <!-- <mat-divider inset></mat-divider> -->
+
+    <!-- <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+
+</mat-card><br><br><br><br><br>
+
+
+  <mat-dialog-actions align="end" *ngIf="List">
+    <button mat-button mat-dialog-close style="background-color: rgb(133, 206, 157);" expand="block" fill="outline" (click)="submit(Form)" [disabled]="!Form.valid">submit</button><br>
+    <button mat-button mat-dialog-close style="background-color: rgb(120, 120, 248);" (click)="close()">Fermer</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+  </mat-dialog-actions>

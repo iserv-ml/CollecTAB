@@ -1,0 +1,187 @@
+<div class="main">
+
+  <app-nav-bar></app-nav-bar>
+
+<div class="content">
+
+  <div>
+    <button class="burger" (click)="open()">☰</button>
+  </div>
+
+  <div  class="mt-3 mx-20 h1 text-secondary">
+    List des statistiques
+  </div>
+
+  <div class="mt-3 p-12 m-20 br-2 white center_block">
+
+    <div class="mt-3 p-4 m-20 br-2 white center_block">
+      <div class="p-4 flex space">
+        <button mat-stroked-button color="primary">Mise a jour</button>
+        <button mat-stroked-button color="primary">Exporter</button>
+        <!-- <div class="flex user_info"> -->
+  
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div> -->
+  
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="main-searchbar" debounce="500">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter" animated>
+      </mat-form-field>
+    </div>
+
+    <mat-card>
+
+      <div class="mat-elevation-z8">
+
+        <mat-stepper orientation="vertical">
+          <!-- <div *ngFor="let pays of Pays; let i=index">
+              <mat-step>
+                <ng-template matStepLabel>{{pays.nom}}</ng-template>
+                <ng-template matStepContent> -->
+                  <div *ngFor="let region of Region; let i=index">
+                    <!-- <div *ngIf="region.paysEntity.idRegion == pays.idPays"> -->
+                      <mat-step>
+                        <ng-template matStepLabel>{{region.libelle}}</ng-template>
+                        <ng-template matStepContent>
+                          <mat-stepper orientation="vertical">
+                            <div *ngFor="let cercle of Cercle; let i=index">
+                              <div *ngIf="cercle.regionEntity.idRegion == region.idRegion">
+                                <mat-step>
+                                  <ng-template matStepLabel>{{cercle.libelle}}</ng-template>
+                                  <ng-template matStepContent>
+                                    <mat-stepper orientation="vertical">
+                                      <div *ngFor="let commune of Commune; let i=index">
+                                        <div *ngIf="commune.cercleEntity.idCercle == cercle.idCercle">
+                                          <mat-step>
+                                            <ng-template matStepLabel>{{commune.libelle}}</ng-template>
+                                            <ng-template matStepContent>
+                                              <mat-stepper orientation="vertical">
+                                                <div *ngFor="let quartier of Quartier; let i=index">
+                                                  <div *ngIf="quartier.communeEntity.idCommune == commune.idCommune">
+                                                    <mat-step>
+                                                      <ng-template matStepLabel>{{quartier.libelle}}</ng-template>
+                                                      <ng-template matStepContent>
+                                                        <mat-stepper orientation="vertical">
+                                                          <div *ngFor="let centre of Centre; let i=index">
+                                                            <div *ngIf="centre.quartierEntity.idQuartier == quartier.idQuartier">
+                                                              <mat-step>
+                                                                <ng-template matStepLabel>{{centre.code}}</ng-template>
+                                                                <ng-template matStepContent>
+                                                                  <mat-stepper orientation="vertical">
+                                                                    <div *ngFor="let bureau of Bureau; let i=index">
+                                                                      <div *ngIf="bureau.centreEntity.idCentre == centre.idCentre">
+                                                                        <mat-step>
+                                                                          <ng-template matStepLabel>{{bureau.nom}}</ng-template>
+                                                                          <ng-template matStepContent>
+                                                                            <div class="ms-2 me-auto" (click)="showStatistique(bureau.idBureauVote)">
+                                                                              <div class="fw-bold">{{i + 1}} {{bureau.nom}}</div>
+                                                                              <!-- Cras justo odio -->
+                                                                            </div>
+                                                                          </ng-template>
+                                                                        </mat-step>
+                                                                      </div>
+                                                                    </div>
+                                                                  </mat-stepper>
+                                                                </ng-template>
+                                                              </mat-step>
+                                                            </div>
+                                                          </div>
+                                                        </mat-stepper>
+                                                      </ng-template>
+                                                    </mat-step>
+                                                  </div>
+                                                </div>
+                                              </mat-stepper>
+                                            </ng-template>
+                                          </mat-step>
+                                        </div>
+                                      </div>
+                                    </mat-stepper>
+                                  </ng-template>
+                                </mat-step>
+                              </div>
+                            </div>
+                          </mat-stepper>
+                        </ng-template>
+                      </mat-step>
+                    <!-- </div> -->
+                  </div>
+                <!-- </ng-template>
+              </mat-step>
+          </div> -->
+        </mat-stepper>
+
+        <!-- <table mat-table [dataSource]="dataSource">
+  
+          Position Column
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element; let i=index;"> {{i + 1}} </td>
+          </ng-container>
+    
+          Weight Column
+          <ng-container matColumnDef="phase">
+            <th mat-header-cell *matHeaderCellDef> Phase </th>
+            <td mat-cell *matCellDef="let element"> {{element.phase_electionEntity.libelle}} </td>
+          </ng-container>
+      
+          Name Column
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_statistique | date : "dd MMMM y hh:mm:ss"}} </td>
+          </ng-container>
+      
+          Symbol Column
+          <ng-container matColumnDef="agent">
+            <th mat-header-cell *matHeaderCellDef> Agent </th>
+            <td mat-cell *matCellDef="let element"> {{element.affectationagentEntity.user.nom}} - {{element.affectationagentEntity.user.prenom}} </td>
+          </ng-container>
+    
+          Symbol Column
+          <ng-container matColumnDef="bureauVote">
+            <th mat-header-cell *matHeaderCellDef> Bureaux de vote </th>
+            <td mat-cell *matCellDef="let element"> {{element.affectationagentEntity.bureauvoteEntity.nom}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element"> 
+              <mat-icon (click)="openDialog(element.idstatistique)" style="margin-right: 27px; color: rgb(120, 120, 248);">view_column</mat-icon>
+              <mat-icon (click)="openDialog2(element.idstatistique)" style="margin-right: 27px; color: rgb(120, 120, 248);">open_in_new</mat-icon>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator> -->
+
+      </div>
+  
+    </mat-card>
+
+    <div class="p-4 flex space">
+      <div class="flex user_info">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
